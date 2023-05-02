@@ -37,3 +37,12 @@ h1 {
   background-color: #815f1d !important;
   color: #EAD1A1;
 }
+
+p {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #000000;
+  text-align: center;
+}
