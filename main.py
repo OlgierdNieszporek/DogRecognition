@@ -55,7 +55,9 @@ def upload_image():
         print(possibleBreeds)
     else:
         file_url = None
-    return render_template('index.html', form=form, file_url=file_url, possible_breed=possibleBreeds[0],
+    return render_template('index.html', form=form,
+                           file_url=file_url,
+                           possible_breed=possibleBreeds[0],
                            certainty=possibleBreeds[1])
 
 
