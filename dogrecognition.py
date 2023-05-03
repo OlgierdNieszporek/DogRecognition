@@ -1,10 +1,10 @@
 import tensorflow as tf
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications import imagenet_utils
-
 
 def recognizeDog(filename):
     filename = 'uploads/' + filename
@@ -16,7 +16,7 @@ def recognizeDog(filename):
     img = image.load_img(filename, target_size=(224, 224))  # the model works with 224X224 resolution
 
     resizedImage = image.img_to_array(img)
-    print("Risized image shape")
+    print("Resized image shape")
     print(resizedImage.shape)
 
     imageWithMoreDimantion = np.expand_dims(resizedImage, axis=0)
