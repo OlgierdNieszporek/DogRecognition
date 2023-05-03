@@ -1,0 +1,84 @@
+{
+  "info": {
+    "description": "This program recognizes dog breeds",
+    "version": "1.0.0",
+    "title": "Dog breed recognition"
+  },
+  "tags": [
+    {
+      "name": "API"
+    }
+  ],
+  "swagger": "2.0",
+  "paths": {
+    "/": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Upload an image and recognize a dog breed",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "photo",
+            "type": "file",
+            "description": "The image file to upload for dog breed recognition"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "possible_breed": {
+                  "type": "string",
+                  "description": "The recognized breed of the uploaded dog image"
+                },
+                "certainty": {
+                  "type": "number",
+                  "description": "The confidence level (0-1) of the recognized dog breed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/uploads/{filename}": {
+        "get": {
+          "tags": [
+            "API"
+          ],
+          "summary": "Get uploaded file",
+          "parameters": [
+            {
+              "name": "filename",
+              "in": "path",
+              "required": true,
+              "description": "The name of the uploaded file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "File content",
+              "content": {
+                "image/*": {
+                  "schema": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "File not found"
+            }
+          }
+        }
+      }
+    }
+  }
