@@ -32,7 +32,7 @@ def get_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_image():
-    possibleBreeds = ['chuj', 'chuj']
+    possibleBreeds = ['breed', 'certainty']
     form = UploadForm()
     if form.validate_on_submit():
         filename = photos.save(form.photo.data)
