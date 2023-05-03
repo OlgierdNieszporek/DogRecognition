@@ -10,7 +10,7 @@ def recognizeDog(filename):
 
     mobile = tf.keras.applications.mobilenet_v2.MobileNetV2()
 
-    img = image.load_img(filename, target_size=(224, 224))  # the model works with 224X224 resolution
+    img = image.load_img(filename, target_size=(224, 224))
     resizedImage = image.img_to_array(img)
     print("Resized image shape")
     print(resizedImage.shape)
@@ -19,7 +19,8 @@ def recognizeDog(filename):
     print("imageWithMoreDimantion image shape")
     print(imageWithMoreDimantion.shape)
 
-    finalImage = tf.keras.applications.mobilenet.preprocess_input(imageWithMoreDimantion)
+    finalImage = tf.keras.applications.\
+        mobilenet.preprocess_input(imageWithMoreDimantion)
 
     predictions = mobile.predict(finalImage)
 
