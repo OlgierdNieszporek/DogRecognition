@@ -4,12 +4,10 @@ import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications import imagenet_utils
 
+
 def recognizeDog(filename):
     filename = 'uploads/' + filename
 
-
-    # resnet = tf.keras.applications.resnet50.ResNet50()
-    # lets try another nodel
     mobile = tf.keras.applications.mobilenet_v2.MobileNetV2()
 
     img = image.load_img(filename, target_size=(224, 224))  # the model works with 224X224 resolution
@@ -49,7 +47,7 @@ def prepareResults(results):
 
 
 def parseToPercent(certainty):
-    parsedValue = round(float(certainty), 2)*100
+    parsedValue = round(float(certainty), 2) * 100
     return parsedValue
 
 
