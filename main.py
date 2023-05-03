@@ -3,13 +3,27 @@ from flask import Flask, render_template, send_from_directory, url_for, jsonify
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
+from flask_swagger_ui import get_swaggerui_blueprint
 from wtforms import SubmitField
 
 from dogrecognition import recognizeDog
 
 app = Flask(__name__)
+
 app.config['SECRET_KEY'] = 'asldfkjlj'
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
+
+SWAGGER_URL = '/docs'
+API_URL = '/static/swagger.json'
+SWAGGER_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Todo List API"
+    }
+)
+
+app.register_blueprint(SWAGGER_BLUEPRINT, url_prefix=SWAGGER_URL)
 
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
