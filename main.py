@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, url_for, jsonify
+from flask import Flask, render_template, send_from_directory, url_for
 
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_wtf import FlaskForm
